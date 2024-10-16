@@ -1,4 +1,4 @@
-# os-history-diff
+# history-diff
 
 A Bash script for students to compare their command history against their teachers'. This tool helps identify commands used by teachers but not by the student, facilitating learning and exploration of new command-line tools and techniques.
 
