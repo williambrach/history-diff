@@ -35,7 +35,13 @@ diff_cmds=$(comm -23 <(echo "$teacher_cmds" | sort) <(echo "$my_cmds" | sort))
 
 # Display commands used by teachers but not by the user
 echo "Commands used by teachers but not by you:"
-echo "$diff_cmds"
+echo "$diff_cmds" | while read -r cmd; do
+man "$cmd" > isCommand 2>/dev/null
+if [[ -s isCommand ]]; then
+	echo "$cmd"
+fi
+> isCommand
+done
 
 # If 'full' argument is provided, show full command history diff
 if $show_full; then
