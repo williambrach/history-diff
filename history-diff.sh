@@ -37,11 +37,10 @@ diff_cmds=$(comm -23 <(echo "$teacher_cmds" | sort) <(echo "$my_cmds" | sort))
 echo "Commands used by teachers but not by you:"
 echo "$diff_cmds" | while read -r cmd; do
 man "$cmd" > isCommandInMan 2>/dev/null
-type "$cmd" > isCommandInType 2>/dev/null
-if grep -q "builtin" isCommandInType; then
-        echo "$cmd"
+if command -v "$cmd" &> /dev/null; then
+    echo "$cmd"
 elif [[ -s isCommandInMan ]]; then
-	echo "$cmd"
+    echo "$cmd"
 fi
 done
 
